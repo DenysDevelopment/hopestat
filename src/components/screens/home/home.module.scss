@@ -1,0 +1,38 @@
+.text {
+  font-size: 17px;
+  line-height: 120%;
+  text-align: center;
+
+  color: #949ba5;
+}
+
+.title {
+  text-align: center;
+}
+
+.home {
+  position: relative;
+  background: url("/images/home-img.jpg") no-repeat center top / cover;
+  min-height: 100vh;
+  padding-top: 450px;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 97px;
+    left: 50%;
+    width: 394px;
+    height: 380px;
+    transform: translate(-50%, 0px);
+    background: url("/images/home-man.png") no-repeat center / cover;
+  }
+}
+
+.text {
+  margin-bottom: 50px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

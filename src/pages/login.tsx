@@ -1,7 +1,8 @@
 import LoginPage from "@/components/screens/login/LoginPage";
 import { NextPage } from "next";
 
-const Home: NextPage = () => {
+const Login: NextPage = (): JSX.Element => {
   return <LoginPage />;
 };
-export default Home;
+
+export default Login;

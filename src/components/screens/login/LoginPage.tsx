@@ -19,8 +19,15 @@ const LoginPage: FC = (): JSX.Element => {
   });
 
   const onSubmitForm = handleSubmit((data) => {
-    AuthService.loginUser(data).then((response) => {
-      console.log(response);
+    // const formData = new FormData();
+    // formData.append("login", data.login);
+    // formData.append("password", data.password);
+    // AuthService.loginUser(formData).then((response) => {
+    //   console.log(response);
+    // });
+
+    AuthService.loginUser(data).then((users) => {
+      console.log(users);
     });
   });
 

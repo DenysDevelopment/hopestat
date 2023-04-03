@@ -19,6 +19,14 @@ export const AuthService = {
       return response.data;
     });
   },
+
+  getAllUsers: () => {
+    return axiosClassic
+      .get<IUserResponse>(`/api/users/get/all`)
+      .then((response) => {
+        return response.data;
+      });
+  },
   // registerUser: (data: IUser) => {
   //   return axiosClassic
   //     .post<IUserResponse>(`/api/users/add`, data)

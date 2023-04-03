@@ -8,11 +8,14 @@ import styles from "./field.module.scss";
 import IconField from "./IconField";
 console.log(API_URL);
 const Field: FC<IField> = forwardRef<HTMLInputElement, IField>(
-  ({ type = "text", icon, error, placeholder, ...rest }, ref): JSX.Element => {
+  (
+    { type = "text", icon, error, placeholder, className, ...rest },
+    ref
+  ): JSX.Element => {
     return (
       <>
         <div
-          className={classNames(styles.wrap, {
+          className={classNames(styles.wrap, className, {
             // [styles.errorField]: error,
           })}
         >

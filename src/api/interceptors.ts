@@ -1,9 +1,7 @@
 import axios from "axios";
 
-import { API_URL } from "./../config/api.config";
-
 export const axiosClassic = axios.create({
-  baseURL: API_URL,
+  baseURL: "https://5.101.179.136:8009",
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",

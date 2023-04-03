@@ -1,42 +1,61 @@
 import Button from "@/components/button/Button";
 import Field from "@/components/forms/field/Field";
+import Select from "@/components/forms/select/Select";
 import { NextPage } from "next";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { IconPeople } from "../../public/assets/icons";
 
+const options = [
+  { value: "volonter", label: "Волонтер" },
+  { value: "kordynator", label: "Кординатор" },
+  { value: "finance", label: "Фінансовий відділ" },
+];
+
+const options1 = [
+  { value: "korova", label: "korova" },
+  { value: "korova1", label: "korova2" },
+  { value: "korova2", label: "korova3" },
+];
+
 const Register: NextPage = (): JSX.Element => {
-  const { register, handleSubmit } = useForm();
+  const { control, register, handleSubmit, formState } = useForm();
 
   const handleForm = handleSubmit((data) => {
     console.log(data);
   });
   return (
-    <>
+    <div style={{ margin: "0 20px" }}>
       <Button href="/login">Login</Button>
       <form onSubmit={handleForm}>
         <Field icon={<IconPeople />} placeholder="name" {...register("name")} />
         <br />
-        <select {...register("role")} name="role">
-          <option value="cordynator">Кординатор</option>
-          <option value="volonter">volonter</option>
-          <option value="finance">finance</option>
-        </select>
+        <Controller
+          name="role"
+          control={control}
+          defaultValue={""}
+          render={({ field }) => (
+            <Select {...field} options={options} placeholder="Роль" />
+          )}
+        />
         <br />
-        <select {...register("team")} name="team">
-          <option value="cordynator">Chicken</option>
-          <option value="Pisuny">Pisuny</option>
-          <option value="ValeraAmfetamin">Valera Amfetamin</option>
-        </select>
+        <Controller
+          name="team"
+          control={control}
+          defaultValue={""}
+          render={({ field }) => (
+            <Select {...field} options={options1} placeholder="Команда" />
+          )}
+        />
         <br />
-        <Field {...register("date")} placeholder="Народження" type="date" />
+        {/* <input type="date" {...register("date")} /> */}
+        {/* <DatePickerComponent field={register("date")} /> */}
         <br />
-        <Field {...register("passport")} placeholder="Народження" type="file" />
+        {/* <Field {...register("passport")} placeholder="Народження" type="file" />
         <br />
-        <Field {...register("imgman")} placeholder="Народження" type="file" />
-        <br />
-        <button>Register</button>
+        <Field {...register("imgman")} placeholder="Народження" type="file" /> */}
+        <Button>register</Button>
       </form>
-    </>
+    </div>
   );
 };
 

@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 import { IconLock, IconPeople } from "../../../../public/assets/icons";
 
 import { AuthService } from "@/services/auth.services";
-import Link from "next/link";
 import styles from "./Login.module.scss";
 
 const LoginPage: FC = (): JSX.Element => {
@@ -20,7 +19,9 @@ const LoginPage: FC = (): JSX.Element => {
   });
 
   const onSubmitForm = handleSubmit((data) => {
-    AuthService.loginUser(data);
+    AuthService.loginUser(data).then((response) => {
+      console.log(response);
+    });
   });
 
   return (
@@ -41,6 +42,7 @@ const LoginPage: FC = (): JSX.Element => {
           error={errors.login?.message}
           icon={<IconPeople />}
           placeholder="Логін"
+          className={styles.input}
         />
         <Field
           {...register("password", {
@@ -50,6 +52,7 @@ const LoginPage: FC = (): JSX.Element => {
           error={errors.password?.message}
           icon={<IconLock />}
           placeholder="Пароль"
+          className={styles.input}
         />
         <Button className={styles.btn}>Увійти</Button>
         <p className={styles.textHelp}>

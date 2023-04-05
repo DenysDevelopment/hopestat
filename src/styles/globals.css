@@ -6,10 +6,16 @@
   -webkit-text-size-adjust: 100%;
 
   --white-color: #fff;
+  --black-color: #000;
   --primary-color: #00b74f;
   --secondary-color: #32343e;
   --secondary-text: #999a9f;
   --error-color: #f75656;
+
+  --z-index1: 1;
+  --z-index2: 2;
+  --z-index3: 3;
+  --z-index4: 4;
 }
 
 * {

@@ -6,7 +6,6 @@ import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { IconLock, IconPeople } from "../../../../public/assets/icons";
 
-import { AuthService } from "@/services/auth.services";
 import styles from "./Login.module.scss";
 
 const LoginPage: FC = (): JSX.Element => {
@@ -26,9 +25,16 @@ const LoginPage: FC = (): JSX.Element => {
     //   console.log(response);
     // });
 
-    AuthService.loginUser(data).then((users) => {
-      console.log(users);
-    });
+    // AuthService.loginUser(data).then((users) => {
+    //   console.log(users);
+    // });
+
+    // AuthService.getAllUsers().then((users) => {
+    //   console.log(users);
+    // });
+    fetch("http://5.101.179.136:8009/api/users/get/all")
+      .then((response) => response.json())
+      .then((response) => console.log(response));
   });
 
   return (

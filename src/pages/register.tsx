@@ -1,7 +1,10 @@
 import Button from "@/components/button/Button";
 import Field from "@/components/forms/field/Field";
+import FileUpload from "@/components/forms/fileUpload/FileUpload";
 import Select from "@/components/forms/select/Select";
+import Modal from "@/components/modal/Modal";
 import { NextPage } from "next";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { IconPeople } from "../../public/assets/icons";
 
@@ -20,11 +23,21 @@ const options1 = [
 const Register: NextPage = (): JSX.Element => {
   const { control, register, handleSubmit, formState } = useForm();
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
   const handleForm = handleSubmit((data) => {
     console.log(data);
   });
   return (
     <div style={{ margin: "0 20px" }}>
+      <Modal open={isModalOpen} onClose={closeModal} />
+      <Button onClick={openModal}>Open modal</Button>
       <Button href="/login">Login</Button>
       <form onSubmit={handleForm}>
         <Field icon={<IconPeople />} placeholder="name" {...register("name")} />
@@ -50,9 +63,9 @@ const Register: NextPage = (): JSX.Element => {
         {/* <input type="date" {...register("date")} /> */}
         {/* <DatePickerComponent field={register("date")} /> */}
         <br />
-        {/* <Field {...register("passport")} placeholder="Народження" type="file" />
+        <FileUpload label="Завантажте паспорт" />
         <br />
-        <Field {...register("imgman")} placeholder="Народження" type="file" /> */}
+        <FileUpload label="Завантажте фотку людини" />
         <Button>register</Button>
       </form>
     </div>

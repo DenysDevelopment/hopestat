@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import NextNProgress from "nextjs-progressbar";
 import "../components/forms/datePicker/datePicker.scss";
 
 import localFont from "next/font/local";
@@ -52,8 +53,17 @@ const font = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={font.variable}>
-      <Component {...pageProps} />
-    </main>
+    <>
+      <NextNProgress
+        color="#00b74f"
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={2}
+        showOnShallow={true}
+      />
+      <main className={font.variable}>
+        <Component {...pageProps} />
+      </main>
+    </>
   );
 }
